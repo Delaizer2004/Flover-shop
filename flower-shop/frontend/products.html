@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FloralBloom</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Навігаційна панель -->
+    <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#">FloralBloom</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <input type="text" id="search" placeholder="Search">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link text-white" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#">Products</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#">Contact Us</a></li>
+                    <li class="cart-icon">
+                        <a href="shopping_cart.html">
+                            <img src="cart-icon.png" alt="Cart"> <span id="cart-count">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Головний банер -->
+    <header class="hero">
+        <div class="overlay"></div>
+        <div class="container text-center text-white">
+            <h1>Welcome to FloralBloom</h1>
+            <p>Your one-stop shop for beautiful flowers and gifts.</p>
+        </div>
+    </header>
+
+    <!-- Featured Products -->
+    <main>
+        <h1>Каталог квітів</h1>
+        <div class="filters">
+            <input type="text" id="search" placeholder="Пошук квітів...">
+            
+            <select id="sort-price">
+                <option value="asc">Від дешевших до дорожчих</option>
+                <option value="desc">Від дорожчих до дешевших</option>
+            </select>
+
+            <select id="filter-type">
+                <option value="">Усі квіти</option>
+                <option value="Роза">Троянди</option>
+                <option value="Тюльпан">Тюльпани</option>
+                <option value="Соняшник">Соняшники</option>
+            </select>
+        </div>
+        <div class="product-list" id="product-list">
+            <!-- Товари будуть завантажуватись динамічно через JS -->
+        </div>
+    </main>
+
+    <!-- Футер -->
+    <footer class="bg-dark text-white text-center p-4">
+        <p>&copy; 2024 FloralBloom. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
