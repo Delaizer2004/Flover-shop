@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Реєстрація | FloralBloom</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    .register-container {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 16px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .register-container h1 {
+        text-align: center;
+    }
+    .register-container form {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+    .register-container form input {
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    .register-container form button {
+        padding: 8px;
+        border: none;
+        border-radius: 4px;
+        background-color: #007BFF;
+        color: white;
+        cursor: pointer;
+    }
+    .register-container form button:hover {
+        background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="register-container">
+    <h1>Реєстрація</h1>
+    <form id="register-form">
+      <input type="email" name="email" placeholder="Email" required>
+      <input type="password" name="password" placeholder="Пароль" required>
+      <!-- Якщо потрібна роль, можна додати select, або за замовчуванням встановлювати "USER" -->
+      <button type="submit">Зареєструватися</button>
+    </form>
+  </div>
+  
+  <script>
+    document.getElementById("register-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      const data = Object.fromEntries(formData.entries());
+      try {
+        const res = await fetch('/api/users/register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        const result = await res.json();
+        alert(result.message || "Реєстрація пройшла успішно!");
+        window.location.href = "login.html";
+      } catch (error) {
+        console.error("Помилка реєстрації:", error);
+      }
+    });
+  </script>
+</body>
+</html>

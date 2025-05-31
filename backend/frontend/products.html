@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FloralBloom</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Навігаційна панель -->
+    <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#">FloralBloom</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link text-white" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="products.html">Products</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="contact.html">Contact Us</a></li>
+                    <li class="nav-item">
+                        <div class="user-info" id="user-info">
+                            <a class="nav-link text-white" href="register.html">Register</a>
+                            <a class="nav-link text-white" href="login.html">Login</a>
+                        </div>
+                    </li>
+                    <li class="cart-icon">
+                        <a href="shopping_cart.html">
+                            <img src="images/shopping-cart.png" alt="Cart"> <span id="cart-count">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Featured Products -->
+    <main>
+        <h1>Каталог квітів</h1>
+        <div class="filters">
+            <input type="text" id="filter-name" placeholder="Пошук квітів...">
+            
+            <input type="number" id="filter-price-min" placeholder="Min price">
+            <input type="number" id="filter-price-max" placeholder="Max price">
+            <button id="apply-filters">Apply Filters</button>
+        </div>
+        <div class="products-container" id="products-container">
+            <!-- Товари будуть завантажуватись динамічно через JS -->
+        </div>
+        
+    </main>
+
+    <!-- Футер -->
+    <footer class="bg-dark text-white text-center p-4">
+        <p>&copy; 2024 FloralBloom. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            padding: 16px;
+            background-color: #f8f8f8;
+            border-bottom: 1px solid #ccc;
+        }
+        .header .nav {
+            display: flex;
+            gap: 16px;
+        }
+        .header .user-info {
+            display: flex;
+            gap: 16px;
+        }
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px;
+        }
+        .content h1 {
+            text-align: center;
+        }
+        .content p {
+            text-align: justify;
+        }
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .contact-form input, .contact-form textarea {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .contact-form button {
+            padding: 8px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+        }
+        .contact-form button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+  <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+    <div class="container">
+        <a class="navbar-brand" href="#">FloralBloom</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link text-white" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="products.html">Products</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="about.html">About Us</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="contact.html">Contact Us</a></li>
+                <li class="nav-item">
+                    <div class="user-info" id="user-info">
+                        <a class="nav-link text-white" href="register.html">Register</a>
+                        <a class="nav-link text-white" href="login.html">Login</a>
+                    </div>
+                </li>
+                <li class="cart-icon">
+                    <a href="shopping_cart.html">
+                        <img src="images/shopping-cart.png" alt="Cart"> <span id="cart-count">0</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+  </nav>
+
+    <div class="content">
+        <h1>Contact Us</h1>
+        <p>If you have any questions, comments, or would like to place an order, please feel free to contact us. We are here to help you with all your floral needs.</p>
+        <form class="contact-form" id="contact-form">
+            <input type="text" id="name" name="name" placeholder="Your Name" required>
+            <input type="email" id="email" name="email" placeholder="Your Email" required>
+            <textarea id="message" name="message" placeholder="Your Message" rows="4" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+
+    <footer class="bg-dark text-white text-center p-4">
+        <p>&copy; 2025 FloralBloom. Усі права захищено.</p>
+      </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const token = localStorage.getItem('token');
+            const userInfo = document.getElementById('user-info');
+
+            if (token) {
+                fetch('/api/users/me', {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                })
+                .then(response => response.json())
+                .then(user => {
+                    userInfo.innerHTML = `<span>${user.email}</span><button onclick="logout()">Logout</button>`;
+                })
+                .catch(error => {
+                    console.error('Error fetching user:', error);
+                    userInfo.innerHTML = `<a href="/login.html">Login  </a><a href="/register.html">  Register</a>`;
+                });
+            } else {
+                userInfo.innerHTML = `<a href="/login.html">Login  </a><a href="/register.html">  Register</a>`;
+            }
+        });
+
+        function logout() {
+            localStorage.removeItem('token');
+            window.location.href = '/index.html';
+        }
+
+        document.getElementById('contact-form').addEventListener('submit', (event) => {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            console.log('Contact Form Submitted:', { name, email, message });
+            alert('Your message has been sent!');
+        });
+    </script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

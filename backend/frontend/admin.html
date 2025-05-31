@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Адмін-панель | FloralBloom</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Адмін-панель</h1>
+  <!-- Тут можна додати навігацію, таблиці з даними (користувачі, замовлення, товари тощо) -->
+  <div id="admin-content">
+    <!-- Приклад: список користувачів -->
+  </div>
+  <script>
+    // Приклад завантаження даних для адмін-панелі
+    async function loadAdminData() {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        alert("Ви не авторизовані!");
+        window.location.href = "login.html";
+        return;
+      }
+      try {
+        const res = await fetch('/api/users', {
+          headers: { 'Authorization': `Bearer ${token}` }
+        });
+        const users = await res.json();
+        const adminContent = document.getElementById("admin-content");
+        adminContent.innerHTML = `<h2>Список користувачів</h2>
+          <ul>${users.map(u => `<li>${u.email} (${u.role})</li>`).join('')}</ul>`;
+      } catch (error) {
+        console.error("Помилка завантаження даних:", error);
+      }
+    }
+    loadAdminData();
+  </script>
+</body>
+</html>
