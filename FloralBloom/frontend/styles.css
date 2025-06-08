@@ -1,0 +1,123 @@
+/* Загальні стилі для тіла, якщо потрібно притиснути футер */
+body {
+    background-color: #111; /* Ваш основний темний фон */
+    color: white; /* Ваш основний колір тексту */
+    /* d-flex flex-column min-vh-100 вже додано в HTML через Bootstrap класи */
+}
+
+/* Стилі для навігаційної панелі, якщо потрібні специфічні налаштування */
+.navbar-brand {
+    font-weight: bold;
+}
+.cart-icon img {
+    width: 24px;
+    height: auto;
+    vertical-align: middle;
+    filter: invert(1); /* Робить білу іконку на темному фоні */
+}
+.cart-icon .badge {
+    font-size: 0.7em;
+    position: relative;
+    top: -10px;
+    right: -2px;
+}
+/* Вирівнювання #user-info, якщо він містить кілька елементів */
+#user-info.d-flex .nav-link,
+#user-info.d-flex button {
+    margin-left: 0.5rem;
+}
+#user-info.d-flex .nav-link:first-child,
+#user-info.d-flex button:first-child {
+    margin-left: 0;
+}
+
+
+/* Стилі для сторінки товарів (products.html) */
+.filters .form-control, .filters .btn {
+    font-size: 0.9rem;
+}
+.products-section-title {
+    color: #ffc107; /* Жовтий для заголовків секцій */
+    border-bottom: 2px solid #444;
+    padding-bottom: 0.5rem;
+}
+.product-card-item {
+    background-color: #222; /* Темніший фон для карток */
+    border: 1px solid #333;
+    transition: transform .2s ease-in-out, box-shadow .2s ease-in-out;
+}
+.product-card-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0.5rem 1rem rgba(255, 105, 180, 0.15) !important; /* Рожева тінь при наведенні */
+}
+.product-card-item .card-title {
+    color: #ffc107; /* Жовтий для назв товарів */
+}
+.product-card-item .card-text.fw-bold { /* Ціна */
+    color: #0dcaf0; /* Світло-блакитний для ціни */
+}
+.product-image {
+    height: 200px; /* Або інша фіксована висота */
+    object-fit: cover; /* Зберігає пропорції, обрізаючи зайве */
+    border-bottom: 1px solid #333;
+}
+.add-to-cart-btn {
+    background-color: #dc3545; /* Червоний */
+    border-color: #dc3545;
+}
+.add-to-cart-btn:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+}
+.rate-btn {
+    font-size: 0.8rem;
+    border-color: #6c757d;
+    color: #adb5bd;
+}
+.rate-btn:hover {
+    background-color: #6c757d;
+    color: white;
+}
+
+
+/* Стилі для модального вікна оцінки (текст всередині модалки) */
+#ratingModal .modal-content {
+    background-color: #f8f9fa; /* Світлий фон для модалки */
+}
+#ratingModalLabel, #ratingModal .form-label, #ratingModal .modal-body {
+    color: #212529; /* Темний текст всередині модалки */
+}
+
+
+/* Стилі для сторінки кошика (shopping_cart.html) */
+.cart-item {
+    background-color: #222; /* Темніший фон для елементів кошика */
+    border: 1px solid #333;
+}
+.cart-item h5 {
+    color: #ffc107; /* Жовтий для назв товарів у кошику */
+}
+.cart-summary {
+    background-color: #2a2a2a !important; /* Ще темніший фон для підсумку */
+    color: white;
+}
+#cart-total {
+    font-size: 1.25rem;
+}
+#checkout.btn-success {
+    background-color: #198754; /* Зелений */
+    border-color: #198754;
+}
+#checkout.btn-success:hover {
+    background-color: #157347;
+    border-color: #146c43;
+}
+
+/* Для темної теми Bootstrap, щоб спиннер був помітний */
+.spinner-border.text-primary {
+    color: #0dcaf0 !important; /* Або інший яскравий колір */
+}
+
+/* Інші стилі з вашого styles_cart.css, якщо вони ще актуальні, можна перенести сюди */
+
+    
